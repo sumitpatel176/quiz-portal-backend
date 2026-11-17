@@ -55,10 +55,10 @@ public class AuthController {
 	    // 2. HttpOnly Cookie Build Karein
 	    ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", authResult.getRefreshToken())
 	            .httpOnly(true)                  // JavaScript access block (XSS Protection)
-	            .secure(false)                   // Localhost testing ke liye false (Production HTTPS par true)
+	            .secure(true)                   // Localhost testing ke liye false (Production HTTPS par true)
 	            .path("/api/v1/auth/refresh")       // Specific endpoint path limit
 	            .maxAge(7 * 24 * 60 * 60)        // 7 Days Expiry
-	            .sameSite("Strict")              // CSRF Protection
+	            .sameSite("None")              // CSRF Protection
 	            .build();
 
 	    // 3. Header mein Cookie + Body mein AuthResponse
@@ -76,10 +76,10 @@ public class AuthController {
 	    // 2. Refresh Token Cookie ko Expire/Delete karne ke liye maxAge(0) wali empty cookie banao
 	    ResponseCookie cleanCookie = ResponseCookie.from("refreshToken", "")
 	            .httpOnly(true)
-	            .secure(false)                   // Localhost testing ke liye false (Production HTTPS par true)
+	            .secure(true)                   // Localhost testing ke liye false (Production HTTPS par true)
 	            .path("/api/v1/auth/refresh")       // Clean target path
 	            .maxAge(0)                       // maxAge = 0 matlab Cookie Browser se turant DELETE ho jayegi
-	            .sameSite("Strict")
+	            .sameSite("None")
 	            .build();
 
 	    // 3. Response Return kiya
