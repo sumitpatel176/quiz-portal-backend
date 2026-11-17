@@ -107,7 +107,7 @@ public class UserServiceImp implements UserService{
 	    userResponse.setId(user.getId());
 	    userResponse.setUsername(user.getUsername());
 	    userResponse.setEmail(user.getEmail());
-	    userResponse.setRole(user.getRole());
+	    userResponse.setRole(user.getRole().toUpperCase());
         
         AuthResponse authresponse =  new AuthResponse("user login successfully",accessToken, userResponse);
         
@@ -153,7 +153,7 @@ public class UserServiceImp implements UserService{
 		    userResponse.setId(user.getId());
 		    userResponse.setUsername(user.getUsername());
 		    userResponse.setEmail(user.getEmail());
-		    userResponse.setRole(user.getRole());
+		    userResponse.setRole(user.getRole().toUpperCase());
 
 		    // 4. AuthResponse DTO bana kar return karo
 		    AuthResponse authResponse = new AuthResponse("Token Refreshed!", newAccessToken, userResponse);
@@ -182,7 +182,7 @@ public class UserServiceImp implements UserService{
 	    userResponse.setId(user.getId());
 	    userResponse.setUsername(user.getUsername());
 	    userResponse.setEmail(user.getEmail());
-	    userResponse.setRole(user.getRole());
+	    userResponse.setRole(user.getRole().toUpperCase());
 		return userResponse;
 	}
 
