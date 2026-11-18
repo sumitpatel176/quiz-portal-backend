@@ -32,6 +32,10 @@ public class User {
 	@JsonIgnore
 	private List<Result> results;
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	private List<QuizAttempt> quizAttempts;
+	
 	public User() {
 		
 	}
