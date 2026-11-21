@@ -57,8 +57,8 @@ public class QuizServiceImp implements QuizService {
                 .orElseThrow(() -> new ResourceNotFoundException("Quiz not found with id: " + id));
     }
 
-    @Transactional
     @Override
+    @Transactional
     public void deleteQuiz(Long id) {
     	
     	Quiz quiz = quizRepository.findById(id)

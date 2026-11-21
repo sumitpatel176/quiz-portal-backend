@@ -36,12 +36,8 @@ public class AdminQuizController {
 	}
 	
 	@DeleteMapping("/deleteQuiz/{id}")
-    public ResponseEntity<Map<String,String>> deleteQuiz(@PathVariable Long id) {
+    public ResponseEntity<?> deleteQuiz(@PathVariable Long id) {
         quizService.deleteQuiz(id);
-        
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Quiz deleted Successfully.");
-        
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok("Quiz deleted Successfully.");
     }
 }

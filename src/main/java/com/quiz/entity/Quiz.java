@@ -26,6 +26,10 @@ private String description;
 
 @OneToMany(mappedBy = "quiz", cascade =CascadeType.ALL,fetch=FetchType.LAZY)
 private List<Question> questions;
+
+@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<QuizAttempt> attempts;
+
 public Long getId() {
 	return id;
 }
